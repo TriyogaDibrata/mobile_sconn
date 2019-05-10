@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Add</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-item>
+    <ion-label position="stacked">Kategori</ion-label>
+    <ion-select placeholder="Pilih Kategori">
+      <ion-select-option *ngFor="let kat of kategori" value="{{kat.id}}">{{kat.nama}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+<ion-content padding>
+  <ion-item no-padding>
+    <ion-label position="stacked" placeholeder="Tuliskan topik....">Topik</ion-label>
+    <ion-textarea></ion-textarea>
+  </ion-item>
+
+  <ion-item no-padding>
+    <ion-label position="stacked" placeholeder="Tuliskan uraian....">Uraian</ion-label>
+    <ion-textarea></ion-textarea>
+  </ion-item>
+
+  <ion-item-divider no-padding>
+    <ion-text color="dark">Lampiran Gambar</ion-text>
+    <ion-button fill="clear" size="large" (click)="selectPhoto()">
+      <ion-icon slot="icon-only" name="add-circle" color="primary"></ion-icon>
+    </ion-button>
+  </ion-item-divider>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let photo of photos; let id = index">
+        <ion-card class="block">
+          <ion-icon name="trash" class="deleteIcon" (click)="deletePhoto(id)"></ion-icon>
+          <img [src]="photo" *ngIf="photo" />
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="notifications" color="warning"></ion-icon>
+        <ion-badge color="danger">2</ion-badge>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-card *ngFor="let item of data;">
+      <ion-card-header>
+        <ion-avatar>
+          <ion-img src="assets/images/user.png"></ion-img>
+        </ion-avatar>
+        <ion-card-subtitle>
+          <ion-title no-padding *ngFor="let user of item.has_user" class="ion-text-capitalize">{{user.name}}</ion-title>
+          <ion-label>1 Jam Yang Lalu</ion-label>
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-slides pager="true" [options]="slideOpts">
+          <ion-slide *ngFor="let images of item.files">
+            <ion-img [src]="images.file"></ion-img>
+          </ion-slide>
+        </ion-slides>
+        <ion-row>
+          <ion-col size="1.5">
+            <ion-icon name="happy" size="large"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="text" size="large"></ion-icon>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <div class="bold_text">
+              2 Orang Mendukung
+            </div>
+          </ion-col>
+          <ion-col size="12">
+            <div class="bold_text">
+              12 Komentar
+            </div>
+          </ion-col>
+          <ion-col size="12">
+            <ion-text><strong>{{ item.topik}}</strong></ion-text>
+          </ion-col>
+          <ion-col size="12">
+            <ion-icon name="bookmark" color="warning"></ion-icon>
+            <ion-text>{{item.kategori}}</ion-text>
+          </ion-col>
+          <ion-col size="12">
+            <ion-text class="ion-text-justify" [id]="item.id">{{ item.uraian | words: 10 }}</ion-text>
+            <ion-text color="primary" (click)="showMore(item.id)" *ngIf="truncated"> more</ion-text>
+            <ion-text color="primary" (click)="showLess(item.id)" *ngIf="!truncated"> less</ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Load more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

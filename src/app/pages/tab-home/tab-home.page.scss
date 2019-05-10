@@ -1,0 +1,26 @@
+ion-card-header {
+    display: flex;
+    position: relative;
+
+    ion-avatar{
+        width: 52px;
+        height: 52px;
+    }
+
+    ion-card-subtitle{
+        margin-left: 20px;
+
+        ion-title {
+            color: #000000;
+        }
+    }
+}
+
+ion-card-content{
+    ion-img {
+        width: 350px;
+        height: 350px;
+        display: block;
+        object-fit: scale-down;
+    }
+}

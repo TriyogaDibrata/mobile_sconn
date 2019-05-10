@@ -1,0 +1,32 @@
+
+ion-img{
+    height: 30vh;
+    width: auto;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 5vh;
+    
+}
+
+ion-content{
+    --background: linear-gradient(to bottom, #0072ff, #00c6ff);
+}
+
+.logo-name{
+    text-align: center;
+    color: #FFFFFF;
+    text-transform: capitalize;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+ion-item {
+    --ion-item-background: transparent;
+}
+
+login-input{
+    color: #ffffff;
+}
+
+p {
+    color: #ffffff;
+}

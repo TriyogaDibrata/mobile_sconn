@@ -1,0 +1,47 @@
+<ion-content padding class="animated fadeIn login auth-page">
+  <div class="auth-content">
+    <ion-img src="assets/images/logo.png"></ion-img>
+
+    <div class="logo-name">
+      <h3>
+        Daftar
+      </h3>
+    </div>
+
+    <form class="list-form">
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="stacked" color="light">
+          <ion-icon name="contact" color="light" item-start></ion-icon>
+          Nama
+        </ion-label>
+        <ion-input color="secondary" type="text" name="name" [(ngModel)]="user.name"></ion-input>
+      </ion-item>
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="stacked" color="light">
+          <ion-icon name="mail" color="light" item-start></ion-icon>
+          Email
+        </ion-label>
+        <ion-input color="secondary" type="text" name="email" [(ngModel)]="user.email"></ion-input>
+      </ion-item>
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="stacked" color="light">
+          <ion-icon name="key" color="light" item-start></ion-icon>
+          Password
+        </ion-label>
+        <ion-input color="secondary" type="Password" name="password" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="stacked" color="light">
+          <ion-icon name="key" color="light" item-start></ion-icon>
+          Konfirmasi Password
+        </ion-label>
+        <ion-input color="secondary" type="Password" name="c_password" [(ngModel)]="user.c_password"></ion-input>
+      </ion-item>
+
+      <ion-button expand="full" shape="round" color="secondary" class="ion-margin" (click)="register()">Daftar</ion-button>
+
+      <p class="ion-text-center">Sudah terdaftar? <ion-text routerLink="/login" tappable>Login</ion-text>
+      </p>
+    </form>
+  </div>
+</ion-content>
